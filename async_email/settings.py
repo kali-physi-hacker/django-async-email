@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'services',
+    'django_rq'
 ]
 
 MIDDLEWARE = [
@@ -116,3 +117,24 @@ EMAIL_HOST_PASSWORD = 'lpifikwuxnlrptoi'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'info@test.com'
+
+# RQ Configurations
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'redis_cache.cache.RedisCache',
+#         'LOCATION': 'localhost:6379:1',
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#             'MAX_ENTRIES': 5000
+#         }
+#     }
+# }
+
+RQ_QUEUES = {
+    'default': {
+        'HOST': 'localhost',
+        'PORT': 6379,
+        'DB': 0,
+        'DEFAULT_TIMEOUT': 360
+    }
+}

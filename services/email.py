@@ -1,7 +1,9 @@
 from django.core.mail import send_mail
 
+import django_rq
 
-def send():
+
+def sender():
     """
     Send a test email
     """
@@ -10,4 +12,9 @@ def send():
     email_from = "info@test.com"
     recipient_list = ["browndesmond30@yahoo.com"]
 
-    send_mail(subject=subject, message=message, from_email=email_from, recipient_list=recipient_list)
+    for _ in range(200):
+        send_mail(subject=subject, message=message, from_email=email_from, recipient_list=recipient_list)
+
+
+def send():
+    django_rq.enqueue(sender)
