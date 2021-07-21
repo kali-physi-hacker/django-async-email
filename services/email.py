@@ -12,7 +12,7 @@ def sender():
     email_from = "info@test.com"
     recipient_list = ["browndesmond30@yahoo.com"]
 
-    for _ in range(200):
+    for _ in range(5):
         send_mail(subject=subject, message=message, from_email=email_from, recipient_list=recipient_list)
 
 
