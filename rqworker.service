@@ -1,0 +1,12 @@
+[Unit]
+Description=Django-RQ Worker
+After=network.target
+
+[Service]
+WorkingDirectory=~/django-async-email
+ExecStart=~/async-email/bin/python \
+    ~/django-async-email/manage.py \
+    rqworker high default low
+
+[Install]
+WantedBy=multi-user.target
